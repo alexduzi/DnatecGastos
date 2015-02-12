@@ -11,3 +11,16 @@ c:\users\duzi\documents\visual studio 2013\Projects\Dnatec_ControleGastos\Dnatec
 c:\users\duzi\documents\visual studio 2013\Projects\Dnatec_ControleGastos\Dnatec_ControleGastos\bin\wfastcgi.py
 c:\users\duzi\documents\visual studio 2013\Projects\Dnatec_ControleGastos\Dnatec_ControleGastos\obj\Debug\web.config
 c:\users\duzi\documents\visual studio 2013\Projects\Dnatec_ControleGastos\Dnatec_ControleGastos\obj\Debug\web.debug.config
+C:\Users\aduzi\Documents\Visual Studio 2013\Projects\DnatecGastos\Dnatec_ControleGastos\bin\Microsoft.PythonTools.WebRole.dll
+C:\Users\aduzi\Documents\Visual Studio 2013\Projects\DnatecGastos\Dnatec_ControleGastos\obj\Debug\attach_server.py
+C:\Users\aduzi\Documents\Visual Studio 2013\Projects\DnatecGastos\Dnatec_ControleGastos\obj\Debug\visualstudio_py_debugger.py
+C:\Users\aduzi\Documents\Visual Studio 2013\Projects\DnatecGastos\Dnatec_ControleGastos\obj\Debug\visualstudio_py_repl.py
+C:\Users\aduzi\Documents\Visual Studio 2013\Projects\DnatecGastos\Dnatec_ControleGastos\obj\Debug\visualstudio_py_util.py
+C:\Users\aduzi\Documents\Visual Studio 2013\Projects\DnatecGastos\Dnatec_ControleGastos\obj\Debug\__init__.py
+C:\Users\aduzi\Documents\Visual Studio 2013\Projects\DnatecGastos\Dnatec_ControleGastos\obj\Debug\__main__.py
+C:\Users\aduzi\Documents\Visual Studio 2013\Projects\DnatecGastos\Dnatec_ControleGastos\bin\AzureSetup.cfg
+C:\Users\aduzi\Documents\Visual Studio 2013\Projects\DnatecGastos\Dnatec_ControleGastos\bin\Microsoft.PythonTools.AzureSetup.exe
+C:\Users\aduzi\Documents\Visual Studio 2013\Projects\DnatecGastos\Dnatec_ControleGastos\bin\Microsoft.PythonTools.AzureSetup.exe.config
+C:\Users\aduzi\Documents\Visual Studio 2013\Projects\DnatecGastos\Dnatec_ControleGastos\bin\wfastcgi.py
+C:\Users\aduzi\Documents\Visual Studio 2013\Projects\DnatecGastos\Dnatec_ControleGastos\obj\Debug\web.config
+C:\Users\aduzi\Documents\Visual Studio 2013\Projects\DnatecGastos\Dnatec_ControleGastos\obj\Debug\web.debug.config
