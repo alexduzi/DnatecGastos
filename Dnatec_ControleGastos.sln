@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Dnatec_ControleGastos", "Dnatec_ControleGastos\Dnatec_ControleGastos.pyproj", "{15F40AE0-4743-4DCF-8028-5B801DEFF07B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15F40AE0-4743-4DCF-8028-5B801DEFF07B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15F40AE0-4743-4DCF-8028-5B801DEFF07B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15F40AE0-4743-4DCF-8028-5B801DEFF07B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15F40AE0-4743-4DCF-8028-5B801DEFF07B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

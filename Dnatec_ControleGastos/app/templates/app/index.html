@@ -1,0 +1,13 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="list-group">
+  <a href="conta/novaconta.html" class="list-group-item">Cadastrar conta.</a>
+  <a href="conta/contas.html" class="list-group-item">Visualizar contas.</a>
+</div>
+
+{% endif %}
+
+{% endblock %}
