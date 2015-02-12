@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 
 from django.shortcuts import render
 from django.http import HttpRequest
@@ -6,15 +6,23 @@ from django.template import RequestContext
 from datetime import datetime
 
 def home(request):
-    
-    return render(
+
+    if  request.user.is_authenticated():
+        return render(
         request,
         'app/index.html',
         context_instance = RequestContext(request,
         {
             'title':'Bem vindo ao sistema de controle de gastos!',
-        })
-    )
+        }))   
+
+    return render(request,
+                'app/login.html',
+                context_instance = RequestContext(request,
+                {
+                    'title':'',
+                }))
+    
 
 def about(request):
     
@@ -24,7 +32,7 @@ def about(request):
         context_instance = RequestContext(request,
         {
             'title':'Controle de gastos',
-            'message':'Aplicação de controle de gastos do projeto DNATEC desenvolvido por Alex Duzi',
+            'message':'Aplicacao de controle de gastos do projeto DNATEC desenvolvido por Alex Duzi',
         })
     )
 

@@ -4,8 +4,8 @@
 
 {% if user.is_authenticated %}
 <div class="list-group">
-  <a href="conta/novaconta.html" class="list-group-item">Cadastrar conta.</a>
-  <a href="conta/contas.html" class="list-group-item">Visualizar contas.</a>
+  <a href="{% url 'novaconta' %}" class="list-group-item">Cadastrar conta.</a>
+  <a href="{% url 'contas' %}" class="list-group-item">Visualizar contas.</a>
 </div>
 
 {% endif %}
