@@ -17,7 +17,6 @@ def home(request):
             'title':'Bem vindo ao sistema de controle de gastos!',
         }))   
 
-    return cre(request)
     
 
 def about(request):
