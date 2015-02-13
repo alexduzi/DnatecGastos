@@ -45,14 +45,17 @@ def contas(request):
     )
 
 @login_required(login_url='/login/')
-def novaconta(request):
-    
+def novacontarender(request, template_name,nova_conta_form,extra_context):
     return render(
         request,
-        'app/novaconta.html',
+        template_name,
         context_instance = RequestContext(request,
         {
-            'title':'Cadastro de nova conta',
-            'message':'',
+            'title': extra_context['title'],
+            'form': nova_conta_form,
         })
     )
+
+@login_required(login_url='/login/')
+def novacontainsert(request):
+    pass

@@ -4,7 +4,7 @@ Definition of urls for Dnatec_ControleGastos.
 
 from datetime import datetime
 from django.conf.urls import patterns, url
-from app.forms import BootstrapAuthenticationForm
+from app.forms import *
 
 # Uncomment the next lines to enable the admin:
 from django.conf.urls import include
@@ -16,7 +16,18 @@ urlpatterns = patterns('',
     url(r'^$', 'app.views.home', name='home'),
     url(r'^about', 'app.views.about', name='about'),
     url(r'^contas', 'app.views.contas', name='contas'),
-    url(r'^novaconta', 'app.views.novaconta', name='novaconta'),
+    url(r'^novacontainsert', 'app.views.novacontainsert', name='novacontainsert'),
+    url(r'^novaconta$',
+        'app.views.novacontarender',
+        {
+            'template_name': 'app/novaconta.html',
+            'nova_conta_form': BootstrapNovaContaForm,
+            'extra_context':
+            {
+                'title':'Cadastro de nova conta',
+            }
+        },
+        name='novacontarender'),
     url(r'^login/$',
         'django.contrib.auth.views.login',
         {

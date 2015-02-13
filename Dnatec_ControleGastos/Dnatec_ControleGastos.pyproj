@@ -54,7 +54,7 @@
     <Folder Include="Dnatec_ControleGastos\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\templates\app\contas.html" />
+    <Content Include="app\templates\app\contaspartial.html" />
     <Content Include="app\templates\app\novaconta.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
