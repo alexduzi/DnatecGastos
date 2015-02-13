@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from django.template import RequestContext
 from datetime import datetime
+from app.models import *
 
 @login_required(login_url='/login/')
 def home(request):
@@ -33,16 +34,19 @@ def about(request):
 
 @login_required(login_url='/login/')
 def contas(request):
-    
-    return render(
-        request,
-        'app/contas.html',
-        context_instance = RequestContext(request,
-        {
-            'title':'Contas cadastradas',
-            'message':'',
-        })
-    )
+
+    contas = ContasBanco.objects.all();
+    return {'contas': contas}
+
+    #return render(
+    #    request,
+    #    'app/contas.html',
+    #    context_instance = RequestContext(request,
+    #    {
+    #        'title':'Contas cadastradas',
+    #        'message':'',
+    #    })
+    #)
 
 @login_required(login_url='/login/')
 def novacontarender(request, template_name,nova_conta_form,extra_context):

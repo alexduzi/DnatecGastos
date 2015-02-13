@@ -1,5 +1,9 @@
 ﻿{% block content %}
 
-
+<ul>
+{% for conta in contas %}
+    <li> {{ conta }} </li>
+{% endfor %}
+</ul>
 
 {% endblock %}

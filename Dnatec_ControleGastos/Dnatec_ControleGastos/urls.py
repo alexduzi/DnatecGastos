@@ -15,7 +15,7 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'app.views.home', name='home'),
     url(r'^about', 'app.views.about', name='about'),
-    url(r'^contas', 'app.views.contas', name='contas'),
+    #url(r'^contas', 'app.views.contas', name='contas'),
     url(r'^novacontainsert', 'app.views.novacontainsert', name='novacontainsert'),
     url(r'^novaconta$',
         'app.views.novacontarender',
