@@ -3,6 +3,7 @@ from django.db import models
 
 
 class Pagamento(models.Model):
+    
     pago = models.BooleanField(default=False)
     data = models.DateField('Data que o pagamento foi efetuado')
     
@@ -10,6 +11,7 @@ class Pagamento(models.Model):
         return 'Pago: %s Data: %s' %(str(self.pago), str(self.data))
 
 class Gasto(models.Model):
+   
     nome = models.CharField(max_length=30)
     data = models.DateField('Data que foi efetuado o gasto')
     valor = models.FloatField()
@@ -19,6 +21,7 @@ class Gasto(models.Model):
         return 'Nome: %s Data: %s Valor: %s Descricao: %s' %(self.nome, str(self.data), str(self.valor), self.descricao)
 
 class ContaBanco(models.Model):
+    
     nome_banco = models.CharField(max_length=30)
     agencia = models.CharField(max_length=30)
     conta = models.CharField(max_length=30)
