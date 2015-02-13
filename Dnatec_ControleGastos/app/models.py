@@ -14,7 +14,7 @@ class Gasto(models.Model):
     data = models.DateField('Data que foi efetuado o gasto')
     valor = models.FloatField()
     descricao = models.CharField(max_length=800)
-    pagamento = models.ForeignKey(Pagamento)
+    pagamento = models.ForeignKey(Pagamento,None)
     def __str__(self):
         return 'Nome: %s Data: %s Valor: %s Descricao: %s' %(self.nome, str(self.data), str(self.valor), self.descricao)
 
@@ -23,7 +23,7 @@ class ContaBanco(models.Model):
     agencia = models.CharField(max_length=30)
     conta = models.CharField(max_length=30)
     saldo_conta_corrente = models.FloatField()
-    gastos = models.ManyToManyField(Gasto)
+    gastos = models.ManyToManyField(Gasto, None)
     def __str__(self):
         return 'Nome banco: %s Agencia: %s Conta: %s Saldo: %s' %(self.nome_banco, 
                                                                     self.agencia, 

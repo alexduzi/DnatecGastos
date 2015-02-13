@@ -1,10 +1,11 @@
 
-
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpRequest
 from django.template import RequestContext
 from datetime import datetime
 
+@login_required(login_url='/login/')
 def home(request):
 
     if  request.user.is_authenticated():
@@ -16,12 +17,7 @@ def home(request):
             'title':'Bem vindo ao sistema de controle de gastos!',
         }))   
 
-    return render(request,
-                'app/login.html',
-                context_instance = RequestContext(request,
-                {
-                    'title':'',
-                }))
+    return cre(request)
     
 
 def about(request):
@@ -36,6 +32,7 @@ def about(request):
         })
     )
 
+@login_required(login_url='/login/')
 def contas(request):
     
     return render(
@@ -48,6 +45,7 @@ def contas(request):
         })
     )
 
+@login_required(login_url='/login/')
 def novaconta(request):
     
     return render(
