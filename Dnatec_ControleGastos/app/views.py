@@ -63,3 +63,13 @@ def novacontarender(request, template_name,nova_conta_form,extra_context):
 @login_required(login_url='/login/')
 def novacontainsert(request):
     pass
+
+
+@login_required(login_url='/login/')
+def novacontainsert(request):
+    pass
+
+
+@login_required(login_url='/login/')
+def novagastoinsert(request):
+    pass

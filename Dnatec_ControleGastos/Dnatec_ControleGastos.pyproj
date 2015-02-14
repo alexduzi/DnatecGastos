@@ -63,6 +63,8 @@
   <ItemGroup>
     <Content Include="app\templates\app\contaspartial.html" />
     <Content Include="app\templates\app\novaconta.html" />
+    <Content Include="app\templates\app\novogasto.html" />
+    <Content Include="app\templates\app\novopagamento.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />

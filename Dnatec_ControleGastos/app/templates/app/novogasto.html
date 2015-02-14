@@ -1,0 +1,11 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<form action="/novagastoinsert/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Cadastrar" />
+</form>
+
+{% endblock %}

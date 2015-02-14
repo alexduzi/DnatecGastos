@@ -28,6 +28,32 @@ urlpatterns = patterns('',
             }
         },
         name='novacontarender'),
+    url(r'^novaconta$',
+        'app.views.novacontarender',
+        {
+            'template_name': 'app/novogasto.html',
+            'nova_conta_form': BootstrapNovoGastoForm,
+            'extra_context':
+            {
+                'title':'Cadastro de nova conta',
+            }
+        },
+        name='novacontarender'),
+
+    url(r'^novaconta$',
+        'app.views.novacontarender',
+        {
+            'template_name': 'app/novopagamento.html',
+            'nova_conta_form': BootstrapNovoPagamentoForm,
+            'extra_context':
+            {
+                'title':'Cadastro de nova conta',
+            }
+        },
+        name='novacontarender'),
+
+
+
     url(r'^login/$',
         'django.contrib.auth.views.login',
         {
@@ -40,6 +66,9 @@ urlpatterns = patterns('',
             }
         },
         name='login'),
+
+
+
     url(r'^logout$',
         'django.contrib.auth.views.logout',
         {

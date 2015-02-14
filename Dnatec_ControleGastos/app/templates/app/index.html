@@ -4,12 +4,11 @@
 {% if user.is_authenticated %}
 {% load gastos_extras %}
 <div class="list-group">
-  <a href="{% url 'novacontarender' %}" class="list-group-item">Cadastrar conta.</a>
+  <div class="list-group-item"><a href="{% url 'novacontarender' %}">Cadastrar conta.</a></div>
 </div>
 <br />
-{% mostra_contas contas %}
 <p>Contas Cadastradas</p>
-
+{% mostra_contas contas %}
 {% endif %}
 
 {% endblock %}

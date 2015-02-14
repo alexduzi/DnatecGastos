@@ -1,8 +1,8 @@
 ﻿{% block content %}
 
-<ul>
+<ul class="list-group">
 {% for conta in contas %}
-    <li> {{ conta.nome_banco }} </li>
+    <li class="list-group-item"> {{ conta.nome_banco }} </li>
 {% endfor %}
 </ul>
 
