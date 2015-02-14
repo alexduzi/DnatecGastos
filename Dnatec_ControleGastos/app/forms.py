@@ -14,13 +14,6 @@ class BootstrapAuthenticationForm(AuthenticationForm):
                                    'class': 'form-control',
                                    'placeholder':'Password'}))
 
-
-#nome_banco = models.CharField(max_length=30)
-#    agencia = models.CharField(max_length=30)
-#    conta = models.CharField(max_length=30)
-#    saldo_conta_corrente = models.FloatField()
-#    gastos = models.ManyToManyField(Gasto, None)
-
 class BootstrapNovaContaForm(forms.Form):
     
     nome_banco = forms.CharField(label=_("Nome banco"),

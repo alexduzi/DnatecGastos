@@ -1,6 +1,13 @@
 
 from os import path
+from os import pardir
+
 PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
+SETTINGS_PATH = path.dirname(__file__)
+PROJECT_PATH = path.join(SETTINGS_PATH, pardir)
+PROJECT_PATH = path.abspath(PROJECT_PATH)
+TEMPLATES_PATH = path.join(PROJECT_PATH, "templates")
+
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG

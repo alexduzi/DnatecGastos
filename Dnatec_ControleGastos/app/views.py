@@ -6,16 +6,19 @@ from django.template import RequestContext
 from datetime import datetime
 from app.models import *
 
+
 @login_required(login_url='/login/')
 def home(request):
 
     if  request.user.is_authenticated():
+        contabanco = ContaBanco.objects.all()
         return render(
         request,
         'app/index.html',
         context_instance = RequestContext(request,
         {
             'title':'Bem vindo ao sistema de controle de gastos!',
+            'contas' : contabanco,
         }))   
 
     
@@ -32,11 +35,8 @@ def about(request):
         })
     )
 
-@login_required(login_url='/login/')
-def contas(request):
 
-    contas = ContasBanco.objects.all();
-    return {'contas': contas}
+
 
     #return render(
     #    request,

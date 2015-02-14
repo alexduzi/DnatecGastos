@@ -1,15 +1,14 @@
-{% extends "app/layout.html" %}
+{% extends "layout.html" %}
 
 {% block content %}
-
 {% if user.is_authenticated %}
+{% load gastos_extras %}
 <div class="list-group">
   <a href="{% url 'novacontarender' %}" class="list-group-item">Cadastrar conta.</a>
 </div>
 <br />
-{% load gastos_extras %}
+{% mostra_contas contas %}
 <p>Contas Cadastradas</p>
-{% contas %}
 
 {% endif %}
 
