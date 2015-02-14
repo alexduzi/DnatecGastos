@@ -17,6 +17,8 @@ urlpatterns = patterns('',
     url(r'^about', 'app.views.about', name='about'),
     #url(r'^contas', 'app.views.contas', name='contas'),
     url(r'^novacontainsert', 'app.views.novacontainsert', name='novacontainsert'),
+    
+    #bootstrap forms
     url(r'^novaconta$',
         'app.views.novacontarender',
         {
@@ -28,29 +30,30 @@ urlpatterns = patterns('',
             }
         },
         name='novacontarender'),
+
     url(r'^novaconta$',
-        'app.views.novacontarender',
+        'app.views.novagastorender',
         {
             'template_name': 'app/novogasto.html',
             'nova_conta_form': BootstrapNovoGastoForm,
             'extra_context':
             {
-                'title':'Cadastro de nova conta',
+                'title':'Cadastro de novo gasto',
             }
         },
-        name='novacontarender'),
+        name='novagastorender'),
 
     url(r'^novaconta$',
-        'app.views.novacontarender',
+        'app.views.novopagamentorender',
         {
             'template_name': 'app/novopagamento.html',
             'nova_conta_form': BootstrapNovoPagamentoForm,
             'extra_context':
             {
-                'title':'Cadastro de nova conta',
+                'title':'Cadastro de novo pagamento',
             }
         },
-        name='novacontarender'),
+        name='novopagamentorender'),
 
 
 

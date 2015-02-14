@@ -61,6 +61,31 @@ def novacontarender(request, template_name,nova_conta_form,extra_context):
     )
 
 @login_required(login_url='/login/')
+def novagastorender(request, template_name,nova_conta_form,extra_context):
+    return render(
+        request,
+        template_name,
+        context_instance = RequestContext(request,
+        {
+            'title': extra_context['title'],
+            'form': nova_conta_form,
+        })
+    )
+
+@login_required(login_url='/login/')
+def novopagamentorender(request, template_name,nova_conta_form,extra_context):
+    return render(
+        request,
+        template_name,
+        context_instance = RequestContext(request,
+        {
+            'title': extra_context['title'],
+            'form': nova_conta_form,
+        })
+    )
+
+
+@login_required(login_url='/login/')
 def novacontainsert(request):
     pass
 
