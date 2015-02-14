@@ -20,7 +20,7 @@ urlpatterns = patterns('',
     url(r'^novaconta$',
         'app.views.novacontarender',
         {
-            'template_name': 'novaconta.html',
+            'template_name': 'app/novaconta.html',
             'nova_conta_form': BootstrapNovaContaForm,
             'extra_context':
             {
@@ -31,7 +31,7 @@ urlpatterns = patterns('',
     url(r'^login/$',
         'django.contrib.auth.views.login',
         {
-            'template_name': 'login.html',
+            'template_name': 'app/login.html',
             'authentication_form': BootstrapAuthenticationForm,
             'extra_context':
             {

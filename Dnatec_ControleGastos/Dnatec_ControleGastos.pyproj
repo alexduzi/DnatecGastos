@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
+    <Folder Include="app\templates\app\" />
     <Folder Include="app\templatetags\" />
     <Folder Include="app\static\" />
     <Folder Include="app\static\app\" />
@@ -60,8 +61,8 @@
     <Folder Include="Dnatec_ControleGastos\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\templates\contaspartial.html" />
-    <Content Include="app\templates\novaconta.html" />
+    <Content Include="app\templates\app\contaspartial.html" />
+    <Content Include="app\templates\app\novaconta.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
@@ -86,11 +87,11 @@
     <Content Include="app\static\app\scripts\respond.js" />
     <Content Include="app\static\app\scripts\respond.min.js" />
     <Content Include="app\static\app\scripts\_references.js" />
-    <Content Include="app\templates\about.html" />
-    <Content Include="app\templates\index.html" />
-    <Content Include="app\templates\layout.html" />
-    <Content Include="app\templates\login.html" />
-    <Content Include="app\templates\loginpartial.html" />
+    <Content Include="app\templates\app\about.html" />
+    <Content Include="app\templates\app\index.html" />
+    <Content Include="app\templates\app\layout.html" />
+    <Content Include="app\templates\app\login.html" />
+    <Content Include="app\templates\app\loginpartial.html" />
   </ItemGroup>
   <ItemGroup>
     <None Include="readme.mht">
