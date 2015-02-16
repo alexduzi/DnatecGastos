@@ -4,7 +4,9 @@ from django.contrib.auth.forms import *
 from django.utils.translation import ugettext_lazy as _
 
 class BootstrapAuthenticationForm(AuthenticationForm):
-    
+    def __init__(self, request = None, *args, **kwargs):
+        return super(BootstrapAuthenticationForm, self).__init__(request, *args, **kwargs)
+
     username = forms.CharField(max_length=254,
                                widget=forms.TextInput({
                                    'class': 'form-control',
@@ -16,6 +18,10 @@ class BootstrapAuthenticationForm(AuthenticationForm):
 
 class BootstrapNovaContaForm(forms.Form):
     
+    def __init__(self, request = None, *args, **kwargs):
+        return super(BootstrapNovaContaForm, self).__init__(request, *args, **kwargs)
+
+
     nome_banco = forms.CharField(label=_("Nome banco"),
                                 max_length=254,
                                widget=forms.TextInput({
@@ -37,6 +43,9 @@ class BootstrapNovaContaForm(forms.Form):
 
 class BootstrapNovoGastoForm(forms.Form):
     
+    def __init__(self, request = None, *args, **kwargs):
+        return super(BootstrapNovoGastoForm, self).__init__(request, *args, **kwargs)
+
     gasto = forms.CharField(label=_("Nome do gasto"),
                                 max_length=254,
                                widget=forms.TextInput({
@@ -57,6 +66,9 @@ class BootstrapNovoGastoForm(forms.Form):
 
 class BootstrapNovoPagamentoForm(forms.Form):
     
+    def __init__(self, request = None, *args, **kwargs):
+        return super(BootstrapNovoPagamentoForm, self).__init__(request, *args, **kwargs)
+
     nome_banco = forms.CharField(label=_("Nome banco"),
                                 max_length=254,
                                widget=forms.TextInput({

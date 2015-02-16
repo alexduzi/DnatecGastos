@@ -5,9 +5,12 @@ from django.http import HttpRequest
 from django.template import RequestContext
 from datetime import datetime
 from app.models import *
+from app.forms import *
+from django.shortcuts import redirect
+from django.contrib import messages
+from django.contrib.messages import constants as msg
+from app.views import redirect
 
-
-@login_required(login_url='/login/')
 def home(request):
 
     if  request.user.is_authenticated():
@@ -19,9 +22,9 @@ def home(request):
         {
             'title':'Bem vindo ao sistema de controle de gastos!',
             'contas' : contabanco,
-        }))   
-
-    
+        }))  
+    else:
+        return redirect('django.contrib.auth.views.login')
 
 def about(request):
     
@@ -32,69 +35,101 @@ def about(request):
         {
             'title':'Controle de gastos',
             'message':'Aplicacao de controle de gastos do projeto DNATEC desenvolvido por Alex Duzi',
-        })
-    )
+        }))
+
+
+def novacontarender(request):
+
+    if  request.user.is_authenticated():
+        return render(
+            request,
+            'app/novaconta.html',
+            context_instance = RequestContext(request,
+            {
+                'title': 'Cadastro de nova conta',
+                'form': BootstrapNovaContaForm,
+            })
+        )
+    else:
+        return redirect('django.contrib.auth.views.login')
+
+
+def novagastorender(request,contaid):
+
+    if  request.user.is_authenticated():
+        contabanco = ContaBanco.objects.get(id=contaid)
+        return render(
+            request,
+            'app/novogasto.html',
+            context_instance = RequestContext(request,
+            {
+                'title': 'Cadastro de novo gasto',
+                'form': BootstrapNovoGastoForm,
+                'conta': contabanco
+            })
+        )
+    else:
+        return redirect('django.contrib.auth.views.login')
+
+
+def novopagamentorender(request):
+    
+    if  request.user.is_authenticated():
+        return render(
+            request,
+            'app/novopagamento.html',
+            context_instance = RequestContext(request,
+            {
+                'title': 'Cadastro de novo pagamento',
+                'form': BootstrapNovoPagamentoForm,
+            })
+        )
+    else:
+        return redirect('django.contrib.auth.views.login')
 
 
 
-
-    #return render(
-    #    request,
-    #    'app/contas.html',
-    #    context_instance = RequestContext(request,
-    #    {
-    #        'title':'Contas cadastradas',
-    #        'message':'',
-    #    })
-    #)
-
-@login_required(login_url='/login/')
-def novacontarender(request, template_name,nova_conta_form,extra_context):
-    return render(
-        request,
-        template_name,
-        context_instance = RequestContext(request,
-        {
-            'title': extra_context['title'],
-            'form': nova_conta_form,
-        })
-    )
-
-@login_required(login_url='/login/')
-def novagastorender(request, template_name,nova_conta_form,extra_context):
-    return render(
-        request,
-        template_name,
-        context_instance = RequestContext(request,
-        {
-            'title': extra_context['title'],
-            'form': nova_conta_form,
-        })
-    )
-
-@login_required(login_url='/login/')
-def novopagamentorender(request, template_name,nova_conta_form,extra_context):
-    return render(
-        request,
-        template_name,
-        context_instance = RequestContext(request,
-        {
-            'title': extra_context['title'],
-            'form': nova_conta_form,
-        })
-    )
-
-
-@login_required(login_url='/login/')
 def novacontainsert(request):
-    pass
 
+    form = BootstrapNovaContaForm(request.POST)
+    if form.is_valid():
+        banco = ContaBanco()
+        banco.nome_banco = request.POST['nome_banco']
+        banco.conta = request.POST['conta']
+        banco.agencia = request.POST['agencia']
+        banco.saldo_conta_corrente = request.POST['saldo_conta_corrente']
+        banco.save()
+        messages.success(request, 'Nova conta adicionada!')
+        return redirect('app.views.home')
+    else:
+        return redirect('app.views.novacontarender')
 
-@login_required(login_url='/login/')
-def novacontainsert(request):
-    pass
+def novogastoinsert(request, contaid):
 
+    form = BootstrapNovaContaForm(request.POST)
+    if form.is_valid():
+        gasto = Gasto()
+        gasto.nome = request.POST['nome']
+        gasto.data = request.POST['data']
+        gasto.valor = request.POST['valor']
+        gasto.descricao = request.POST['descricao']
+        gasto.save()
+        messages.success(request, 'Novo gasto adicionado!')
+        return redirect('app.views.home')
+    else:
+        return redirect('app.views.novacontarender')
 
-@login_required(login_url='/login/')
-def novagastoinsert(request):
-    pass
+def novopagamentoinsert(request):
+
+    form = BootstrapNovaContaForm(request.POST)
+    if form.is_valid():
+        gasto = Gasto()
+        gasto.nome = request.POST['nome']
+        gasto.data = request.POST['data']
+        gasto.valor = request.POST['valor']
+        gasto.descricao = request.POST['descricao']
+        gasto.save()
+        messages.success(request, 'Novo gasto adicionado!')
+        return redirect('app.views.home')
+    else:
+        return redirect('app.views.novacontarender')

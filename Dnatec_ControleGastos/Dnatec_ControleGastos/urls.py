@@ -16,46 +16,22 @@ urlpatterns = patterns('',
     url(r'^$', 'app.views.home', name='home'),
     url(r'^about', 'app.views.about', name='about'),
     #url(r'^contas', 'app.views.contas', name='contas'),
-    url(r'^novacontainsert', 'app.views.novacontainsert', name='novacontainsert'),
-    
+    url(r'^novacontainsert$', 'app.views.novacontainsert', name='novacontainsert'),
+    url(r'^novogastoinsert/(?P<contaid>\d+)$', 'app.views.novogastoinsert', name='novogastoinsert'),
+    url(r'^novopagamentoinsert$', 'app.views.novopagamentoinsert', name='novopagamentoinsert'),
+
     #bootstrap forms
     url(r'^novaconta$',
         'app.views.novacontarender',
-        {
-            'template_name': 'app/novaconta.html',
-            'nova_conta_form': BootstrapNovaContaForm,
-            'extra_context':
-            {
-                'title':'Cadastro de nova conta',
-            }
-        },
         name='novacontarender'),
 
-    url(r'^novaconta$',
+    url(r'^novogasto/(?P<contaid>\d+)$',
         'app.views.novagastorender',
-        {
-            'template_name': 'app/novogasto.html',
-            'nova_conta_form': BootstrapNovoGastoForm,
-            'extra_context':
-            {
-                'title':'Cadastro de novo gasto',
-            }
-        },
         name='novagastorender'),
 
-    url(r'^novaconta$',
-        'app.views.novopagamentorender',
-        {
-            'template_name': 'app/novopagamento.html',
-            'nova_conta_form': BootstrapNovoPagamentoForm,
-            'extra_context':
-            {
-                'title':'Cadastro de novo pagamento',
-            }
-        },
+    url(r'^novopagamento/(?P<gastoid>\d+)$',
+        'app.views.novopagamentorender', 
         name='novopagamentorender'),
-
-
 
     url(r'^login/$',
         'django.contrib.auth.views.login',

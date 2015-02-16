@@ -4,6 +4,9 @@
 
 <form action="/novagastoinsert/" method="post">
     {% csrf_token %}
+    <div class="clearfix" ></div>
+    {{ conta.nome }}
+    <div class="clearfix" ></div>
     {{ form }}
     <input type="submit" value="Cadastrar" />
 </form>

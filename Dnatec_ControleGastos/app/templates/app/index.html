@@ -3,12 +3,13 @@
 {% block content %}
 {% if user.is_authenticated %}
 {% load gastos_extras %}
-<div class="list-group">
-  <div class="list-group-item"><a href="{% url 'novacontarender' %}">Cadastrar conta.</a></div>
-</div>
-<br />
-<p>Contas Cadastradas</p>
+
+<span class="label label-default">Contas cadastradas</span>
+<div class="clear"></div>
+<span class="label label-default">Clique em cima de uma conta para editar ou cadastrar gastos e pagamentos!</span>
 {% mostra_contas contas %}
+<div class="clear"></div>
+<a type="button" class="btn btn-default navbar-btn" href="{% url 'novacontarender' %}">Nova Conta</a>
 {% endif %}
 
 {% endblock %}
