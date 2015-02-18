@@ -10,7 +10,7 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib.messages import constants as msg
 from app.views import redirect
-
+from django.db import models
 
 def home(request):
 
@@ -59,6 +59,7 @@ def novogastorender(request,contaid):
 
     if  request.user.is_authenticated():
         contabanco = ContaBanco.objects.get(id=contaid)
+        gastos = contabanco.gastos.all()
         return render(
             request,
             'app/novogasto.html',
@@ -66,7 +67,8 @@ def novogastorender(request,contaid):
             {
                 'title': 'Cadastro de novo gasto',
                 'form': BootstrapNovoGastoForm,
-                'conta': contabanco
+                'conta': contabanco,
+                'gastos': gastos,
             })
         )
     else:
@@ -92,9 +94,6 @@ def novopagamentorender(request):
 
 def novacontainsert(request):
 
-    storage = messages.get_messages(request)
-    storage.used = False
-
     form = BootstrapNovaContaForm(request.POST)
     if form.is_valid():
         banco = ContaBanco()
@@ -111,14 +110,11 @@ def novacontainsert(request):
 
 def novogastoinsert(request, contaid):
 
-    storage = messages.get_messages(request)
-    storage.used = False
-
-    form = BootstrapNovaContaForm(request.POST)
+    form = BootstrapNovoGastoForm(request.POST)
     if form.is_valid():
         contabanco = ContaBanco.objects.get(id=contaid)
         gasto = Gasto()
-        gasto.nome = request.POST['nome']
+        gasto.nome = request.POST['gasto']
         gasto.data = request.POST['data']
         gasto.valor = request.POST['valor']
         gasto.descricao = request.POST['descricao']
@@ -133,10 +129,7 @@ def novogastoinsert(request, contaid):
 
 def novopagamentoinsert(request, gastoid):
 
-    storage = messages.get_messages(request)
-    storage.used = False
-
-    form = BootstrapNovaContaForm(request.POST)
+    form = BootstrapNovoPagamentoForm(request.POST)
     if form.is_valid():
         gasto = Gasto.objects.get(id=gastoid)
         pagamento = Pagamento()

@@ -61,6 +61,15 @@
     <Folder Include="Dnatec_ControleGastos\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\static\app\content\jquery-ui.css" />
+    <Content Include="app\static\app\scripts\gastoinit.js" />
+    <Content Include="app\static\app\scripts\jquery-ui.js" />
+    <Content Include="app\static\app\content\jquery-ui.min.css" />
+    <Content Include="app\static\app\scripts\jquery-ui.min.js" />
+    <Content Include="app\static\app\content\jquery-ui.structure.css" />
+    <Content Include="app\static\app\content\jquery-ui.structure.min.css" />
+    <Content Include="app\static\app\content\jquery-ui.theme.css" />
+    <Content Include="app\static\app\content\jquery-ui.theme.min.css" />
     <Content Include="app\static\app\scripts\removemessage.js" />
     <Content Include="app\templates\app\contaspartial.html" />
     <Content Include="app\templates\app\gastospartial.html" />

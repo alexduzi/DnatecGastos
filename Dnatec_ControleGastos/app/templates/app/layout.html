@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     {% load staticfiles %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/jquery-ui.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/jquery-ui.theme.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/jquery-ui.structure.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
+
     <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
     
 </head>
@@ -49,10 +54,12 @@
         </footer>
     </div>
 
-    <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
+    <script src="{% static 'app/scripts/jquery-1.10.2.min.js' %}"></script>
+    <script src="{% static 'app/scripts/jquery-ui.min.js' %}"></script>
     <script src="{% static 'app/scripts/bootstrap.js' %}"></script>
     <script src="{% static 'app/scripts/respond.js' %}"></script>
     <script src="{% static 'app/scripts/removemessage.js' %}"></script>
+    <script src="{% static 'app/scripts/gastoinit.js' %}"></script>
 {% block scripts %}
     
     

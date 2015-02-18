@@ -2,17 +2,18 @@
 
 {% block content %}
 
-<form action="/novogastoinsert//{{ conta.id }}" method="post">
+<form action="/novogastoinsert/{{ conta.id }}" method="post">
     {% csrf_token %}
     <div class="clearfix" ></div>
     {{ conta.nome }}
     <div class="clearfix" ></div>
 
-    {% if conta.gastos %}
+    {% if gastos|length > 0 %}
     <span class="label label-default">Gastos cadastrados</span>
     <div class="clearfix" ></div>
     {% load gastos_extras %}
-    {% mostra_gastos conta.gastos %}
+    {% mostra_gastos gastos %}
+
     <div class="clearfix" ></div>
     {% endif %}
 

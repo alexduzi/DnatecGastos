@@ -32,7 +32,7 @@ class BootstrapNovaContaForm(forms.Form):
                                 widget=forms.TextInput({
                                     'class': 'form-control',
                                     'placeholder':'Conta'}))
-    saldo_conta_corrente = forms.CharField(label=_("Saldo"),
+    saldo_conta_corrente = forms.FloatField(label=_("Saldo"),
                                 widget=forms.NumberInput({
                                     'class': 'form-control',
                                     'placeholder':'Saldo'}))
@@ -47,9 +47,10 @@ class BootstrapNovoGastoForm(forms.Form):
                                    'placeholder': 'Nome do gasto'}))
     data = forms.DateField(label=_("Data em que foi efetuado o gasto"),
                                widget=forms.DateInput({
+                                   'date-input' : 'true',
                                    'class': 'form-control',
                                    'placeholder':'data'}))
-    valor = forms.CharField(label=_("Valor"),
+    valor = forms.FloatField(label=_("Valor"),
                                 widget=forms.NumberInput({
                                     'class': 'form-control',
                                     'placeholder':'Valor'}))
@@ -66,5 +67,6 @@ class BootstrapNovoPagamentoForm(forms.Form):
                                    'placeholder': 'Pago'}))
     data = forms.DateField(label=_("Agencia"),
                                widget=forms.DateInput({
+                                   'date-input' : 'true',
                                    'class': 'form-control',
                                    'placeholder':'Data'}))
