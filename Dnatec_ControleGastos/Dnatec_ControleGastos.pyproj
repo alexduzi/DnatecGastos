@@ -63,9 +63,10 @@
   <ItemGroup>
     <Content Include="app\static\app\scripts\removemessage.js" />
     <Content Include="app\templates\app\contaspartial.html" />
+    <Content Include="app\templates\app\gastospartial.html" />
     <Content Include="app\templates\app\novaconta.html" />
     <Content Include="app\templates\app\novogasto.html" />
-    <Content Include="app\templates\app\novopagamento.html" />
+    <Content Include="app\templates\app\novopagamentomodal.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />

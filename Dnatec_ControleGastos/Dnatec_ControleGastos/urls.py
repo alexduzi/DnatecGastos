@@ -18,7 +18,7 @@ urlpatterns = patterns('',
     #url(r'^contas', 'app.views.contas', name='contas'),
     url(r'^novacontainsert$', 'app.views.novacontainsert', name='novacontainsert'),
     url(r'^novogastoinsert/(?P<contaid>\d+)$', 'app.views.novogastoinsert', name='novogastoinsert'),
-    url(r'^novopagamentoinsert$', 'app.views.novopagamentoinsert', name='novopagamentoinsert'),
+    url(r'^novopagamentoinsert/(?P<gastoid>\d+)$', 'app.views.novopagamentoinsert', name='novopagamentoinsert'),
 
     #bootstrap forms
     url(r'^novaconta$',
@@ -26,8 +26,8 @@ urlpatterns = patterns('',
         name='novacontarender'),
 
     url(r'^novogasto/(?P<contaid>\d+)$',
-        'app.views.novagastorender',
-        name='novagastorender'),
+        'app.views.novogastorender',
+        name='novogastorender'),
 
     url(r'^novopagamento/(?P<gastoid>\d+)$',
         'app.views.novopagamentorender', 

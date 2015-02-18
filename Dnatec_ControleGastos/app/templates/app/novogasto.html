@@ -2,11 +2,20 @@
 
 {% block content %}
 
-<form action="/novagastoinsert/" method="post">
+<form action="/novogastoinsert//{{ conta.id }}" method="post">
     {% csrf_token %}
     <div class="clearfix" ></div>
     {{ conta.nome }}
     <div class="clearfix" ></div>
+
+    {% if conta.gastos %}
+    <span class="label label-default">Gastos cadastrados</span>
+    <div class="clearfix" ></div>
+    {% load gastos_extras %}
+    {% mostra_gastos conta.gastos %}
+    <div class="clearfix" ></div>
+    {% endif %}
+
     {{ form }}
     <input type="submit" value="Cadastrar" />
 </form>

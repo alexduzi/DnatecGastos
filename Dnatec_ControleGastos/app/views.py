@@ -11,6 +11,7 @@ from django.contrib import messages
 from django.contrib.messages import constants as msg
 from app.views import redirect
 
+
 def home(request):
 
     if  request.user.is_authenticated():
@@ -54,7 +55,7 @@ def novacontarender(request):
         return redirect('django.contrib.auth.views.login')
 
 
-def novagastorender(request,contaid):
+def novogastorender(request,contaid):
 
     if  request.user.is_authenticated():
         contabanco = ContaBanco.objects.get(id=contaid)
@@ -91,6 +92,9 @@ def novopagamentorender(request):
 
 def novacontainsert(request):
 
+    storage = messages.get_messages(request)
+    storage.used = False
+
     form = BootstrapNovaContaForm(request.POST)
     if form.is_valid():
         banco = ContaBanco()
@@ -102,34 +106,47 @@ def novacontainsert(request):
         messages.success(request, 'Nova conta adicionada!')
         return redirect('app.views.home')
     else:
+        messages.error(request, 'Gasto nao pode ser incluido!')
         return redirect('app.views.novacontarender')
 
 def novogastoinsert(request, contaid):
 
+    storage = messages.get_messages(request)
+    storage.used = False
+
     form = BootstrapNovaContaForm(request.POST)
     if form.is_valid():
+        contabanco = ContaBanco.objects.get(id=contaid)
         gasto = Gasto()
         gasto.nome = request.POST['nome']
         gasto.data = request.POST['data']
         gasto.valor = request.POST['valor']
         gasto.descricao = request.POST['descricao']
         gasto.save()
+        contabanco.gastos.add(gasto)
+        contabanco.save()
         messages.success(request, 'Novo gasto adicionado!')
-        return redirect('app.views.home')
+        return redirect('app.views.novogastorender/'+contaid)
     else:
+        messages.error(request, 'Gasto nao pode ser incluido!')
         return redirect('app.views.novacontarender')
 
-def novopagamentoinsert(request):
+def novopagamentoinsert(request, gastoid):
+
+    storage = messages.get_messages(request)
+    storage.used = False
 
     form = BootstrapNovaContaForm(request.POST)
     if form.is_valid():
-        gasto = Gasto()
-        gasto.nome = request.POST['nome']
+        gasto = Gasto.objects.get(id=gastoid)
+        pagamento = Pagamento()
+        gasto.pago = request.POST['pago']
         gasto.data = request.POST['data']
-        gasto.valor = request.POST['valor']
-        gasto.descricao = request.POST['descricao']
+        gasto.save()
+        gasto.pagamento = pagamento
         gasto.save()
         messages.success(request, 'Novo gasto adicionado!')
         return redirect('app.views.home')
     else:
+        messages.error(request, 'Pagamento nao pode ser incluido!')
         return redirect('app.views.novacontarender')

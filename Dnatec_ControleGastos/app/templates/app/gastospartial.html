@@ -1,0 +1,9 @@
+﻿{% block content %}
+
+<ul class="list-group">
+{% for gasto in gastos %}
+    <li class="list-group-item"><a href="novopagamento/{{ gasto.id }}">{{ gasto.nome }}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}
