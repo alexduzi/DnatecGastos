@@ -2,7 +2,7 @@
 
 <ul class="list-group">
 {% for conta in contas %}
-    <li class="list-group-item"><a href="novogasto/{{ conta.id }}">{{ conta.nome_banco }}</a></li>
+    <li class="list-group-item"><a href="/novogasto/{{ conta.id }}">{{ conta.nome_banco }}</a> <a onclick="Download.downloadFile('{{ conta.id }}')">arquivo</a> </li>
 {% endfor %}
 </ul>
 

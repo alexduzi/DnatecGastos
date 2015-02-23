@@ -36,6 +36,10 @@ class BootstrapNovaContaForm(forms.Form):
                                 widget=forms.NumberInput({
                                     'class': 'form-control',
                                     'placeholder':'Saldo'}))
+    arquivo = forms.FileField(label=_("Arquivo de anotacoes"),
+                                widget=forms.FileInput({
+                                    'class': 'form-control',
+                                    'placeholder':'Arquivo'}))
 
 
 class BootstrapNovoGastoForm(forms.Form):

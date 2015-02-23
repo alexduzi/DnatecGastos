@@ -20,6 +20,8 @@ urlpatterns = patterns('',
     url(r'^novogastoinsert/(?P<contaid>\d+)$', 'app.views.novogastoinsert', name='novogastoinsert'),
     url(r'^novopagamentoinsert/(?P<gastoid>\d+)$', 'app.views.novopagamentoinsert', name='novopagamentoinsert'),
 
+    url(r'^downloadfile/(?P<contaid>\d+)$', 'app.views.downloadarquivo', name='downloadarquivo'),
+
     #bootstrap forms
     url(r'^novaconta$',
         'app.views.novacontarender',

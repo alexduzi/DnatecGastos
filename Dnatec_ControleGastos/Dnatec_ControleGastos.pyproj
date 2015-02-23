@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\static\app\content\jquery-ui.css" />
+    <Content Include="app\static\app\scripts\downloadfile.js" />
     <Content Include="app\static\app\scripts\gastoinit.js" />
     <Content Include="app\static\app\scripts\jquery-ui.js" />
     <Content Include="app\static\app\content\jquery-ui.min.css" />

@@ -1,7 +1,8 @@
 
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpRequest
+from django.http import HttpResponse
 from django.template import RequestContext
 from datetime import datetime
 from app.models import *
@@ -11,6 +12,14 @@ from django.contrib import messages
 from django.contrib.messages import constants as msg
 from app.views import redirect
 from django.db import models
+from datetime import datetime
+from django.http.response import HttpResponseRedirect
+from django.core.urlresolvers import reverse
+import StringIO
+import zipfile
+from django.core.files.uploadedfile import TemporaryUploadedFile, InMemoryUploadedFile
+from wsgiref.util import FileWrapper
+import os
 
 def home(request):
 
@@ -74,8 +83,18 @@ def novogastorender(request,contaid):
     else:
         return redirect('django.contrib.auth.views.login')
 
+def downloadarquivo(request,contaid):
 
-def novopagamentorender(request):
+    if  request.user.is_authenticated():
+        contabanco = ContaBanco.objects.get(id=contaid)
+        
+        filename = contabanco.arquivo.name                                
+        wrapper = FileWrapper(file(filename))
+        response = HttpResponse(wrapper, content_type='text/plain')
+        response['Content-Length'] = os.path.getsize(filename)
+        return response
+
+def novopagamentorender(request,gastoid):
     
     if  request.user.is_authenticated():
         return render(
@@ -94,35 +113,41 @@ def novopagamentorender(request):
 
 def novacontainsert(request):
 
-    form = BootstrapNovaContaForm(request.POST)
+    form = BootstrapNovaContaForm(request.POST, request.FILES)
     if form.is_valid():
         banco = ContaBanco()
         banco.nome_banco = request.POST['nome_banco']
         banco.conta = request.POST['conta']
         banco.agencia = request.POST['agencia']
         banco.saldo_conta_corrente = request.POST['saldo_conta_corrente']
+        banco.arquivo = request.FILES['arquivo']
         banco.save()
         messages.success(request, 'Nova conta adicionada!')
-        return redirect('app.views.home')
+        return redirect('home')
     else:
         messages.error(request, 'Gasto nao pode ser incluido!')
-        return redirect('app.views.novacontarender')
+        return redirect('novacontarender')
 
 def novogastoinsert(request, contaid):
 
     form = BootstrapNovoGastoForm(request.POST)
     if form.is_valid():
-        contabanco = ContaBanco.objects.get(id=contaid)
+        contabanco = get_object_or_404(ContaBanco, pk=contaid)
+        pagamento = Pagamento(pago=False, data = datetime.now())
+        pagamento.save()
         gasto = Gasto()
         gasto.nome = request.POST['gasto']
-        gasto.data = request.POST['data']
+        dataPosted = datetime.strptime(request.POST['data'], '%m/%d/%Y')
+        gasto.data = dataPosted.strftime('%Y-%m-%d')
         gasto.valor = request.POST['valor']
         gasto.descricao = request.POST['descricao']
+        gasto.pagamento = pagamento
         gasto.save()
         contabanco.gastos.add(gasto)
         contabanco.save()
         messages.success(request, 'Novo gasto adicionado!')
-        return redirect('app.views.novogastorender/'+contaid)
+        return HttpResponseRedirect(reverse("novogasto", args=[contaid]))
+        #return redirect('app.views.novogastorender/'+contaid)
     else:
         messages.error(request, 'Gasto nao pode ser incluido!')
         return redirect('app.views.novacontarender')

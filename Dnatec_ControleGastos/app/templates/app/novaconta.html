@@ -3,9 +3,10 @@
 {% block content %}
 
 
-<form action="/novacontainsert/" method="post">
+<form action="/novacontainsert" enctype="multipart/form-data" method="post">
     {% csrf_token %}
     {{ form }}
+    <div class="clearfix"></div>
     <input type="submit" value="Cadastrar" />
 </form>
 
